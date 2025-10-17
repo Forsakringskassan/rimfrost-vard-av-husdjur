@@ -9,21 +9,19 @@
   </parent>
 
   <groupId>com.example</groupId>
-  <artifactId>template-quarkus-app</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <artifactId>rimfrost-vard-av-husdjur</artifactId>
+  <name>vard-av-husdjur</name>
+  <description>vard-av-husdjur Kogito with Kafka - Quarkus</description>
 
   <properties>
-    <compiler-plugin.version>3.14.1</compiler-plugin.version>
-    <maven.compiler.release>21</maven.compiler.release>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <quarkus-plugin.version>3.15.5</quarkus-plugin.version>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-    <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-    <quarkus.platform.version>3.28.3</quarkus.platform.version>
-    <skipITs>true</skipITs>
-    <surefire-plugin.version>3.5.4</surefire-plugin.version>
-    <!-- Should be 0, is here to show how usage -->
-    <violations.maxViolations>1</violations.maxViolations>
+    <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
+    <quarkus.platform.version>3.15.5</quarkus.platform.version>
+    <kogito.bom.group-id>org.kie.kogito</kogito.bom.group-id>
+    <kogito.bom.artifact-id>kogito-bom</kogito.bom.artifact-id>
+    <kogito.bom.version>999-SNAPSHOT</kogito.bom.version>
+    <version.org.kie.kogito>999-SNAPSHOT</version.org.kie.kogito>
   </properties>
 
   <dependencyManagement>
@@ -35,18 +33,37 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>${kogito.bom.group-id}</groupId>
+        <artifactId>${kogito.bom.artifact-id}</artifactId>
+        <version>${kogito.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
     </dependencies>
   </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-arc</artifactId>
+      <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.kie</groupId>
+      <artifactId>kie-addons-quarkus-messaging</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jbpm</groupId>
+      <artifactId>jbpm-with-drools-quarkus</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-rest</artifactId>
+      <artifactId>quarkus-resteasy</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-jackson</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
@@ -58,30 +75,29 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>3.27.6</version>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-quarkus-test-utils</artifactId>
+      <version>${version.org.kie.kogito}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-rest-jackson</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>se.fk.gradle.examples</groupId>
-      <artifactId>example-jaxrs-spec</artifactId>
-      <version>1.7.1</version>
+      <artifactId>quarkus-smallrye-health</artifactId>
     </dependency>
   </dependencies>
 
   <repositories>
     <repository>
-      <id>central</id>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-    <repository>
       <id>github--Forsakringskassan--repository</id>
       <url>https://maven.pkg.github.com/Forsakringskassan/repository</url>
+    </repository>
+    <repository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <id>apache.snapshots</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/snapshots</url>
     </repository>
   </repositories>
 
@@ -90,58 +106,27 @@
       <id>github--Forsakringskassan--repository</id>
       <url>https://maven.pkg.github.com/Forsakringskassan/repository</url>
     </pluginRepository>
+    <pluginRepository>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <id>apache.snapshots</id>
+      <name>Apache Snapshot Repository</name>
+      <url>https://repository.apache.org/snapshots</url>
+    </pluginRepository>
   </pluginRepositories>
 
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
-        <version>${quarkus.platform.version}</version>
-        <extensions>true</extensions>
+        <version>${quarkus-plugin.version}</version>
         <executions>
           <execution>
             <goals>
               <goal>build</goal>
-              <goal>generate-code</goal>
-              <goal>generate-code-tests</goal>
-              <goal>native-image-agent</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${compiler-plugin.version}</version>
-        <configuration>
-          <parameters>true</parameters>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${surefire-plugin.version}</version>
-        <configuration>
-          <systemPropertyVariables>
-            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
-            <maven.home>${maven.home}</maven.home>
-          </systemPropertyVariables>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <version>${surefire-plugin.version}</version>
-        <configuration>
-          <systemPropertyVariables>
-            <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
-            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
-            <maven.home>${maven.home}</maven.home>
-          </systemPropertyVariables>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
             </goals>
           </execution>
         </executions>

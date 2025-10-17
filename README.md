@@ -1,6 +1,6 @@
-# Template Quarkus App
+# Rimfrost vård av husdjur
 
-An example Quarkus application implementing [template-api](https://github.com/Forsakringskassan/template-api).
+Ett första exempel av en process, vård av husdjur.
 
 Build it with `./mvnw -s settings.xml clean verify`.
 
@@ -9,7 +9,7 @@ A GitHub workflow will also create a Docker image, it is published to [repositor
 ```sh
 docker run -d \
   -p 8080:8080 \
-  ghcr.io/forsakringskassan/template-quarkus-app:snapshot
+  ghcr.io/forsakringskassan/rimfrost-vard-av-husdjur-app:snapshot
 ```
 
 See also: [fk-maven](https://github.com/Forsakringskassan/fk-maven).
