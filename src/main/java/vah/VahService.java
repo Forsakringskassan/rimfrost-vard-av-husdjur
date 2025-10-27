@@ -1,4 +1,4 @@
-package vah;
+package se.fk.github.rimfrost.vardavhusdjur;
 
 import java.util.UUID;
 
