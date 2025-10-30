@@ -1,33 +1,36 @@
+<<<<<<< HEAD:src/main/java/vah/VahRtfRequest.java
 package se.fk.github.rimfrost.vardavhusdjur;
+=======
+package rtf.model;
+>>>>>>> 806e941 (feat: add rtf and rtfmanuell as subprocesses to vah process):src/main/java/rtf/model/VahRtfRequest.java
 
-import java.util.UUID;
 
 public class VahRtfRequest
 {
-
-   private UUID processId;
+   private String processId;
    private String pnr;
 
    public VahRtfRequest()
    {
    }
 
-   public VahRtfRequest(UUID processId, String pnr)
+   public VahRtfRequest(String processId, String pnr)
    {
+      super();
       this.processId = processId;
       this.pnr = pnr;
    }
 
-   public UUID getProcessId()
+   public String getProcessId()
    {
       return processId;
    }
 
-   public void setProcessId(UUID processId)
+   public void setProcessId(String processId)
    {
       this.processId = processId;
    }
-
+   
    public String getPnr()
    {
       return pnr;
