@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/main/java/vah/VahRtfRequest.java
-package se.fk.github.rimfrost.vardavhusdjur;
-=======
-package rtf.model;
->>>>>>> 806e941 (feat: add rtf and rtfmanuell as subprocesses to vah process):src/main/java/rtf/model/VahRtfRequest.java
+package se.fk.github.rimfrost.vardavhusdjur.rtf.model;
 
 
 public class VahRtfRequest

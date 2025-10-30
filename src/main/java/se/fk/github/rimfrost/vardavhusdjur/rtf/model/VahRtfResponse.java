@@ -1,5 +1,4 @@
-package rtf.model;
-
+package se.fk.github.rimfrost.vardavhusdjur.rtf.model;
 
 public class VahRtfResponse
 {

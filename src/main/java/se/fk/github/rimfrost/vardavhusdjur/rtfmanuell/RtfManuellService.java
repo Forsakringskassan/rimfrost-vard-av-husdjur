@@ -1,8 +1,8 @@
-package rtfmanuell;
+package se.fk.github.rimfrost.vardavhusdjur.rtfmanuell;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import rtfmanuell.model.VahRtfManuellRequest;
-import rtfmanuell.model.VahRtfManuellResponse;
+import se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellRequest;
+import se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellResponse;
 
 @ApplicationScoped
 public class RtfManuellService {

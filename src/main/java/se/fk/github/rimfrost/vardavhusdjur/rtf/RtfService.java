@@ -1,8 +1,8 @@
-package rtf;
+package se.fk.github.rimfrost.vardavhusdjur.rtf;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import rtf.model.VahRtfRequest;
-import rtf.model.VahRtfResponse;
+import se.fk.github.rimfrost.vardavhusdjur.rtf.model.VahRtfRequest;
+import se.fk.github.rimfrost.vardavhusdjur.rtf.model.VahRtfResponse;
 
 @ApplicationScoped
 public class RtfService {

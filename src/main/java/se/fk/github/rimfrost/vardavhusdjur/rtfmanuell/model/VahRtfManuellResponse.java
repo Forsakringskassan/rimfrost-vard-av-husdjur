@@ -1,4 +1,4 @@
-package rtfmanuell.model;
+package se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model;
 
 public class VahRtfManuellResponse {
     
