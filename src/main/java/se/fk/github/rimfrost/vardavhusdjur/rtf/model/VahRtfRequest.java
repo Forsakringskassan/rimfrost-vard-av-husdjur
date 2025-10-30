@@ -1,6 +1,5 @@
 package se.fk.github.rimfrost.vardavhusdjur.rtf.model;
 
-
 public class VahRtfRequest
 {
    private String processId;
@@ -26,7 +25,7 @@ public class VahRtfRequest
    {
       this.processId = processId;
    }
-   
+
    public String getPnr()
    {
       return pnr;

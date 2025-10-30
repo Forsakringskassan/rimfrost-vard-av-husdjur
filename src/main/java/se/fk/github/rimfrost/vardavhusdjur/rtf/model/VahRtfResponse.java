@@ -5,7 +5,8 @@ public class VahRtfResponse
    private String processId;
    private boolean result;
 
-   public VahRtfResponse(){
+   public VahRtfResponse()
+   {
    }
 
    public VahRtfResponse(String processId, boolean result)
@@ -14,7 +15,7 @@ public class VahRtfResponse
       this.processId = processId;
       this.result = result;
    }
-   
+
    public String getProcessId()
    {
       return processId;

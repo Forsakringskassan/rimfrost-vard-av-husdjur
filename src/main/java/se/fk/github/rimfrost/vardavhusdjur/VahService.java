@@ -17,9 +17,9 @@ public class VahService
 
    public void informAboutDecision(String pnr, String processId)
    {
-      System.out.println(String.format("Vård av husdjur application for pnr %s with processId %s finished with success!", pnr, processId));
+      System.out.println(
+            String.format("Vård av husdjur application for pnr %s with processId %s finished with success!", pnr, processId));
    }
-
 
    public void registerDecline(String pnr, String processId)
    {
