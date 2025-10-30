@@ -11,5 +11,12 @@ docker run -d \
   -p 8080:8080 \
   ghcr.io/forsakringskassan/rimfrost-vard-av-husdjur-app:snapshot
 ```
+## Testing the docker image
+
+src/test contains a test setup using Java Testcontainers (https://java.testcontainers.org/)<br>
+The test launches a kafka broker and VAH as test containers and mocks the RTF kafka interactions.
+The test uses DTOs generated from OpenAPI- and AsyncAPI-specifications.
+
+Run tests with `./mvnw -s settings.xml clean verify`.
 
 See also: [fk-maven](https://github.com/Forsakringskassan/fk-maven).
