@@ -120,7 +120,7 @@ public class ContainerVahSmokeTest {
         }
     }
 
-    private CompletableFuture<Void> startKafkaResponder(ExecutorService executor) {
+    private CompletableFuture<Void> startKafkaResponder(ExecutorService executor, String jsonData) {
         return CompletableFuture.runAsync(() -> {
             try (KafkaConsumer<String, String> consumer = createConsumer()) {
                 consumer.subscribe(Collections.singletonList(rtfRequestTopic));
@@ -132,7 +132,18 @@ public class ContainerVahSmokeTest {
                 Map<String, Object> req = mapper.readValue(message, new TypeReference<>() {});
                 String processId = (String) req.get("processId");
                 String personNummer = (String) req.get("pnr");
-                sendKafkaResponse(processId, personNummer, "Ja");
+
+                String responseJson = """
+                {
+                  "processId": "%s",
+                  "personNummer": "%s",
+                  "rattTillForsakring": "Ja"
+                }
+                """.formatted(processId, personNummer);
+
+                //sendKafkaResponse(processId, personNummer, "Ja");
+                sendKafkaResponse2(req, rtfResponseTopic, jsonData);
+
                 System.out.printf("Sent mock Kafka response for processId=%s%n", processId);
             } catch (Exception e) {
                 throw new RuntimeException("Kafka responder failed", e);
