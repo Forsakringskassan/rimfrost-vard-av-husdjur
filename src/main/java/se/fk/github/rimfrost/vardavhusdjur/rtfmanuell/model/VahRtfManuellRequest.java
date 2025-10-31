@@ -1,29 +1,27 @@
-package se.fk.github.rimfrost.vardavhusdjur;
+package se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model;
 
-import java.util.UUID;
-
-public class VahRtfRequest
+public class VahRtfManuellRequest
 {
 
-   private UUID processId;
+   private String processId;
    private String pnr;
 
-   public VahRtfRequest()
+   public VahRtfManuellRequest()
    {
    }
 
-   public VahRtfRequest(UUID processId, String pnr)
+   public VahRtfManuellRequest(String processId, String pnr)
    {
       this.processId = processId;
       this.pnr = pnr;
    }
 
-   public UUID getProcessId()
+   public String getProcessId()
    {
       return processId;
    }
 
-   public void setProcessId(UUID processId)
+   public void setProcessId(String processId)
    {
       this.processId = processId;
    }
@@ -37,5 +35,4 @@ public class VahRtfRequest
    {
       this.pnr = pnr;
    }
-
 }
