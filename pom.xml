@@ -84,6 +84,28 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-health</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>kafka</artifactId>
+      <version>1.20.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>testcontainers</artifactId>
+      <version>1.20.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>se.fk.rimfrost.api.vardavhusdjur</groupId>
+      <artifactId>rimfrost-vard-av-husdjur-api-jaxrs-spec</artifactId>
+      <version>0.1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>se.fk.rimfrost.api.vahregelrtfspec</groupId>
+      <artifactId>rimfrost-vah-regel-rtf-api</artifactId>
+      <version>0.1.0</version>
+    </dependency>
 
     <!-- Generated models from API -->
     <dependency>
@@ -139,6 +161,19 @@
           <execution>
             <goals>
               <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>3.1.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
             </goals>
           </execution>
         </executions>
