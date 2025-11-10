@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_SN9-gJeyED68KfmGTuOycQ" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="xsi" id="_Yw_kUJ4NED6dcPiXdgtmOw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_pnrItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_processIdItem" structureRef="String"/>
   <bpmn2:itemDefinition id="_resultItem" structureRef="Boolean"/>
-  <bpmn2:itemDefinition id="_requestItem" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellRequest"/>
-  <bpmn2:itemDefinition id="_responseItem" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellResponse"/>
+  <bpmn2:itemDefinition id="_requestItem" structureRef="se.fk.rimfrost.VahRtfManuellRequestMessageData"/>
+  <bpmn2:itemDefinition id="_responseItem" structureRef="se.fk.rimfrost.VahRtfManuellResponseMessageData"/>
   <bpmn2:itemDefinition id="_B817789B-BD44-4410-B68B-9913833D7431_InMessageType"/>
   <bpmn2:itemDefinition id="_B817789B-BD44-4410-B68B-9913833D7431_OutMessageType"/>
   <bpmn2:itemDefinition id="__B817789B-BD44-4410-B68B-9913833D7431_pnrInputXItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__B817789B-BD44-4410-B68B-9913833D7431_processIdInputXItem" structureRef="String"/>
-  <bpmn2:itemDefinition id="__B817789B-BD44-4410-B68B-9913833D7431_requestOutputXItem" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellRequest"/>
+  <bpmn2:itemDefinition id="__B817789B-BD44-4410-B68B-9913833D7431_requestOutputXItem" structureRef="se.fk.rimfrost.VahRtfManuellRequestMessageData"/>
   <bpmn2:itemDefinition id="_56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_InMessageType"/>
   <bpmn2:itemDefinition id="_56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_OutMessageType"/>
-  <bpmn2:itemDefinition id="__56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_responseInputXItem" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellResponse"/>
+  <bpmn2:itemDefinition id="__56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_responseInputXItem" structureRef="se.fk.rimfrost.VahRtfManuellResponseMessageData"/>
   <bpmn2:itemDefinition id="__56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_resultOutputXItem" structureRef="Boolean"/>
-  <bpmn2:itemDefinition id="__6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputXItem" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellRequest"/>
-  <bpmn2:itemDefinition id="vah-rtf-manuell-requestsType" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellRequest"/>
-  <bpmn2:itemDefinition id="__F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputXItem" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellResponse"/>
-  <bpmn2:itemDefinition id="vah-rtf-manuell-responsesType" structureRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellResponse"/>
-  <bpmn2:itemDefinition id="_A5C88594-7CBA-4AE7-AAF4-284D5299BC17" structureRef=""/>
-  <bpmn2:itemDefinition id="_BD5BDA40-490E-47E6-8071-DE192CD89817" structureRef=""/>
+  <bpmn2:itemDefinition id="__6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputXItem" structureRef="se.fk.rimfrost.VahRtfManuellRequestMessageData"/>
+  <bpmn2:itemDefinition id="vah-rtf-manuell-requestsType" structureRef="se.fk.rimfrost.VahRtfManuellRequestMessageData"/>
+  <bpmn2:itemDefinition id="__F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputXItem" structureRef="se.fk.rimfrost.VahRtfManuellResponseMessageData"/>
+  <bpmn2:itemDefinition id="vah-rtf-manuell-responsesType" structureRef="se.fk.rimfrost.VahRtfManuellResponseMessageData"/>
+  <bpmn2:itemDefinition id="_0BAF23E1-22FD-4A6A-86CB-C953E5FCC1F0" structureRef=""/>
+  <bpmn2:itemDefinition id="_6FAEAD88-A6D6-45F5-8ADE-2901570A70E3" structureRef=""/>
   <bpmn2:message id="_B817789B-BD44-4410-B68B-9913833D7431_InMessage" itemRef="_B817789B-BD44-4410-B68B-9913833D7431_InMessageType"/>
   <bpmn2:message id="_B817789B-BD44-4410-B68B-9913833D7431_OutMessage" itemRef="_B817789B-BD44-4410-B68B-9913833D7431_OutMessageType"/>
   <bpmn2:interface id="_B817789B-BD44-4410-B68B-9913833D7431_ServiceInterface" name="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.RtfManuellService" implementationRef="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.RtfManuellService">
@@ -36,10 +36,10 @@
       <bpmn2:outMessageRef>_56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_OutMessage</bpmn2:outMessageRef>
     </bpmn2:operation>
   </bpmn2:interface>
-  <bpmn2:message id="_SN_MoJeyED68KfmGTuOycQ" itemRef="vah-rtf-manuell-requestsType" name="vah-rtf-manuell-requests"/>
-  <bpmn2:message id="_SN_MoZeyED68KfmGTuOycQ" itemRef="vah-rtf-manuell-responsesType" name="vah-rtf-manuell-responses"/>
-  <bpmn2:collaboration id="_F83F5CD6-6482-49C5-B1F3-F725A21731A1" name="Default Collaboration">
-    <bpmn2:participant id="_E5F4D0F8-8FA8-48AC-A37F-ED965B0FECAC" name="Pool Participant" processRef="rtfManuell"/>
+  <bpmn2:message id="_YxBZgJ4NED6dcPiXdgtmOw" itemRef="vah-rtf-manuell-requestsType" name="vah-rtf-manuell-requests"/>
+  <bpmn2:message id="_YxBZgZ4NED6dcPiXdgtmOw" itemRef="vah-rtf-manuell-responsesType" name="vah-rtf-manuell-responses"/>
+  <bpmn2:collaboration id="_5A6D0C70-5F60-47B3-A90D-14FF4C0FC431" name="Default Collaboration">
+    <bpmn2:participant id="_95758DBD-7433-4195-9131-5B16B1671AD3" name="Pool Participant" processRef="rtfManuell"/>
   </bpmn2:collaboration>
   <bpmn2:process id="rtfManuell" drools:packageName="vah" drools:version="1.0" drools:adHoc="false" name="rtfManuell" isExecutable="true" processType="Public">
     <bpmn2:property id="pnr" itemSubjectRef="_pnrItem" name="pnr"/>
@@ -60,7 +60,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_1A9AECE7-98D4-45A4-9A38-26BBB2546615</bpmn2:incoming>
       <bpmn2:outgoing>_EE9BDAD8-9A04-4C6C-A1C7-F57BF9A2C757</bpmn2:outgoing>
-      <bpmn2:dataOutput id="_F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputX" drools:dtype="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellResponse" itemSubjectRef="__F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputXItem" name="response"/>
+      <bpmn2:dataOutput id="_F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputX" drools:dtype="se.fk.rimfrost.VahRtfManuellResponseMessageData" itemSubjectRef="__F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputXItem" name="response"/>
       <bpmn2:dataOutputAssociation>
         <bpmn2:sourceRef>_F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>response</bpmn2:targetRef>
@@ -68,7 +68,7 @@
       <bpmn2:outputSet>
         <bpmn2:dataOutputRefs>_F916DA22-29BC-4924-BED7-9247DC3468C9_responseOutputX</bpmn2:dataOutputRefs>
       </bpmn2:outputSet>
-      <bpmn2:messageEventDefinition drools:msgref="vah-rtf-manuell-responses" messageRef="_SN_MoZeyED68KfmGTuOycQ"/>
+      <bpmn2:messageEventDefinition drools:msgref="vah-rtf-manuell-responses" messageRef="_YxBZgZ4NED6dcPiXdgtmOw"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:intermediateThrowEvent id="_6CADCD3B-CD64-42FE-9BA2-92661AE3A29D" name="request">
       <bpmn2:extensionElements>
@@ -78,7 +78,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>_315D633C-8640-4556-A050-5196EC5650DD</bpmn2:incoming>
       <bpmn2:outgoing>_1A9AECE7-98D4-45A4-9A38-26BBB2546615</bpmn2:outgoing>
-      <bpmn2:dataInput id="_6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputX" drools:dtype="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellRequest" itemSubjectRef="__6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputXItem" name="request"/>
+      <bpmn2:dataInput id="_6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputX" drools:dtype="se.fk.rimfrost.VahRtfManuellRequestMessageData" itemSubjectRef="__6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputXItem" name="request"/>
       <bpmn2:dataInputAssociation>
         <bpmn2:sourceRef>request</bpmn2:sourceRef>
         <bpmn2:targetRef>_6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputX</bpmn2:targetRef>
@@ -86,7 +86,7 @@
       <bpmn2:inputSet>
         <bpmn2:dataInputRefs>_6CADCD3B-CD64-42FE-9BA2-92661AE3A29D_requestInputX</bpmn2:dataInputRefs>
       </bpmn2:inputSet>
-      <bpmn2:messageEventDefinition drools:msgref="vah-rtf-manuell-requests" messageRef="_SN_MoJeyED68KfmGTuOycQ"/>
+      <bpmn2:messageEventDefinition drools:msgref="vah-rtf-manuell-requests" messageRef="_YxBZgJ4NED6dcPiXdgtmOw"/>
     </bpmn2:intermediateThrowEvent>
     <bpmn2:endEvent id="_1102016A-629A-4F08-9149-41CC5B0F2026">
       <bpmn2:incoming>_56B3D5F8-F96D-4881-81BF-2EFB6D05DE6B</bpmn2:incoming>
@@ -100,7 +100,7 @@
       <bpmn2:incoming>_EE9BDAD8-9A04-4C6C-A1C7-F57BF9A2C757</bpmn2:incoming>
       <bpmn2:outgoing>_56B3D5F8-F96D-4881-81BF-2EFB6D05DE6B</bpmn2:outgoing>
       <bpmn2:ioSpecification>
-        <bpmn2:dataInput id="_56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_responseInputX" drools:dtype="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellResponse" itemSubjectRef="__56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_responseInputXItem" name="response"/>
+        <bpmn2:dataInput id="_56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_responseInputX" drools:dtype="se.fk.rimfrost.VahRtfManuellResponseMessageData" itemSubjectRef="__56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_responseInputXItem" name="response"/>
         <bpmn2:dataOutput id="_56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_resultOutputX" drools:dtype="Boolean" itemSubjectRef="__56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_resultOutputXItem" name="result"/>
         <bpmn2:inputSet>
           <bpmn2:dataInputRefs>_56B21F1C-C6FC-46ED-96A7-F639FA34FAC8_responseInputX</bpmn2:dataInputRefs>
@@ -129,7 +129,7 @@
       <bpmn2:ioSpecification>
         <bpmn2:dataInput id="_B817789B-BD44-4410-B68B-9913833D7431_pnrInputX" drools:dtype="String" itemSubjectRef="__B817789B-BD44-4410-B68B-9913833D7431_pnrInputXItem" name="pnr"/>
         <bpmn2:dataInput id="_B817789B-BD44-4410-B68B-9913833D7431_processIdInputX" drools:dtype="String" itemSubjectRef="__B817789B-BD44-4410-B68B-9913833D7431_processIdInputXItem" name="processId"/>
-        <bpmn2:dataOutput id="_B817789B-BD44-4410-B68B-9913833D7431_requestOutputX" drools:dtype="se.fk.github.rimfrost.vardavhusdjur.rtfmanuell.model.VahRtfManuellRequest" itemSubjectRef="__B817789B-BD44-4410-B68B-9913833D7431_requestOutputXItem" name="request"/>
+        <bpmn2:dataOutput id="_B817789B-BD44-4410-B68B-9913833D7431_requestOutputX" drools:dtype="se.fk.rimfrost.VahRtfManuellRequestMessageData" itemSubjectRef="__B817789B-BD44-4410-B68B-9913833D7431_requestOutputXItem" name="request"/>
         <bpmn2:inputSet>
           <bpmn2:dataInputRefs>_B817789B-BD44-4410-B68B-9913833D7431_pnrInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_B817789B-BD44-4410-B68B-9913833D7431_processIdInputX</bpmn2:dataInputRefs>
@@ -252,7 +252,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_SN9-gJeyED68KfmGTuOycQ</bpmn2:source>
-    <bpmn2:target>_SN9-gJeyED68KfmGTuOycQ</bpmn2:target>
+    <bpmn2:source>_Yw_kUJ4NED6dcPiXdgtmOw</bpmn2:source>
+    <bpmn2:target>_Yw_kUJ4NED6dcPiXdgtmOw</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
