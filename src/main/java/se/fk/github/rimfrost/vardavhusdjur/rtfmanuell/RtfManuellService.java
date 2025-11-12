@@ -10,7 +10,7 @@ public class RtfManuellService
 
    public VahRtfManuellRequestMessageData createVahRtfManuellRequest(String pnr, String processId)
    {
-      System.out.println(String.format("Created VahRtfManuellRequest with pnr: %s with processId: %s", pnr, processId));
+      System.out.printf("Created VahRtfManuellRequest with pnr: %s with processId: %s%n", pnr, processId);
       VahRtfManuellRequestMessageData vahRtfManuellRequestMessageData = new VahRtfManuellRequestMessageData();
       vahRtfManuellRequestMessageData.setPersonNummer(pnr);
       vahRtfManuellRequestMessageData.setProcessId(processId);
@@ -20,9 +20,8 @@ public class RtfManuellService
    public Boolean onVahRtfManuellResponse(VahRtfManuellResponseMessageData vahRtfManuellResponse)
    {
 
-      System.out.println(
-            String.format("Received VahRtfManuellResponse for processId: %s with result: %s",
-                  vahRtfManuellResponse.getProcessId(), vahRtfManuellResponse.getRattTillForsakring()));
+      System.out.printf("Received VahRtfManuellResponse for processId: %s with result: %s%n",
+            vahRtfManuellResponse.getProcessId(), vahRtfManuellResponse.getRattTillForsakring());
       return vahRtfManuellResponse.getRattTillForsakring();
    }
 
