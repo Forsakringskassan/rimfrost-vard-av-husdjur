@@ -93,17 +93,12 @@
       <artifactId>rimfrost-vard-av-husdjur-api-jaxrs-spec</artifactId>
       <version>0.1.0</version>
     </dependency>
-    <dependency>
-      <groupId>se.fk.rimfrost.api.vahregelrtfspec</groupId>
-      <artifactId>rimfrost-vah-regel-rtf-api</artifactId>
-      <version>0.1.0</version>
-    </dependency>
 
     <!-- Generated models from API -->
     <dependency>
       <groupId>se.fk.rimfrost</groupId>
       <artifactId>rimfrost-vah-regel-rtf-api</artifactId>
-      <version>0.1.1</version>
+      <version>0.2.0</version>
     </dependency>
     <dependency>
       <groupId>se.fk.rimfrost</groupId>
