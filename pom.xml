@@ -4,7 +4,7 @@
 
   <parent>
     <groupId>se.fk.maven</groupId>
-    <artifactId>fk-maven-parent</artifactId>
+    <artifactId>fk-maven-quarkus-parent</artifactId>
     <version>1.11.1</version>
   </parent>
 
@@ -55,14 +55,6 @@
       <groupId>org.jbpm</groupId>
       <artifactId>jbpm-with-drools-quarkus</artifactId>
     </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-jackson</artifactId>
-    </dependency>
 
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -101,17 +93,12 @@
       <artifactId>rimfrost-vard-av-husdjur-api-jaxrs-spec</artifactId>
       <version>0.1.0</version>
     </dependency>
-    <dependency>
-      <groupId>se.fk.rimfrost.api.vahregelrtfspec</groupId>
-      <artifactId>rimfrost-vah-regel-rtf-api</artifactId>
-      <version>0.1.0</version>
-    </dependency>
 
     <!-- Generated models from API -->
     <dependency>
       <groupId>se.fk.rimfrost</groupId>
       <artifactId>rimfrost-vah-regel-rtf-api</artifactId>
-      <version>0.1.1</version>
+      <version>0.2.0</version>
     </dependency>
     <dependency>
       <groupId>se.fk.rimfrost</groupId>
