@@ -1,6 +1,5 @@
 package se.fk.github.rimfrost.vardavhusdjur;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -25,7 +24,7 @@ import org.testcontainers.containers.Network;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-import se.fk.rimfrost.api.vahregelrtfspec.*;
+import se.fk.rimfrost.*;
 import se.fk.rimfrost.api.vardavhusdjur.jaxrsspec.controllers.generatedsource.model.VahRequest;
 import se.fk.rimfrost.api.vardavhusdjur.jaxrsspec.controllers.generatedsource.model.VahResponse;
 import java.net.URI;
@@ -36,7 +35,6 @@ import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
@@ -185,7 +183,7 @@ public class VahContainerSmokeIT
       payload.setSpecversion(request.getSpecversion());
       payload.setId(request.getId());
       payload.setSource(request.getSource());
-      payload.setType(topic);
+      // payload.setType(topic); // Hardcoded but should be taken from reply-to in header
       payload.setTime(OffsetDateTime.now());
       payload.setKogitoparentprociid(request.getKogitoparentprociid());
       payload.setKogitorootprocid(request.getKogitorootprocid());
@@ -255,16 +253,14 @@ public class VahContainerSmokeIT
 
       // Verify kafka message produced by VAH
       String kafkaMsg = readKafkaRequestMessage();
-      Map<String, Object> kafkaMap = mapper.readValue(kafkaMsg, new TypeReference<>()
-      {
-      });
-      @SuppressWarnings("unchecked")
-      Map<String, Object> kafkaDataMap = (Map<String, Object>) kafkaMap.get("data");
-      assertEquals(personNummer, kafkaDataMap.get("pnr"));
+      System.out.println("Received kafkaMsg: " + kafkaMsg);
+      VahRtfRequestMessagePayload payload = mapper.readValue(kafkaMsg, VahRtfRequestMessagePayload.class);
+      VahRtfRequestMessageData data = payload.getData();
+      assertEquals(personNummer, data.getPersonNummer());
       // Verify api response
       assertEquals(201, response.statusCode());
       VahResponse vahResponse = mapper.readValue(response.body(), VahResponse.class);
-      assertEquals(kafkaDataMap.get("processId"), vahResponse.getId());
+      assertEquals(data.getProcessId(), vahResponse.getId());
       assertEquals(personNummer, vahResponse.getPnr());
    }
 }
