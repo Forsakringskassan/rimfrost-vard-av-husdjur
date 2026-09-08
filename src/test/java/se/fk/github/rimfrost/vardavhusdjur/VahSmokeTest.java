@@ -21,6 +21,8 @@ class VahSmokeTest extends VahTestBase
 
       CompletableFuture<Void> responderRtfMaskinell = startKafkaResponder(rtfMaskinellRequestTopic,
             rtfMaskinellResponseTopic, Utfall.UTREDNING, handlaggningId);
+      CompletableFuture<Void> responderRtfManuellKomplettering = startKafkaResponder(rtfManuellKompletteringRequestTopic,
+            rtfManuellKompletteringResponseTopic, Utfall.JA, handlaggningId);
       CompletableFuture<Void> responderRtfManuell = startKafkaResponder(rtfManuellRequestTopic,
             rtfManuellResponseTopic, Utfall.JA, handlaggningId);
       CompletableFuture<Void> responderBekraftaBeslut = startKafkaResponder(bekraftaBeslutRequestTopic,
@@ -34,6 +36,16 @@ class VahSmokeTest extends VahTestBase
             RegelRequestMessagePayload.class);
       assertEquals(handlaggningId, rtfMaskinellRequestMessagePayload.getData().getHandlaggningId());
       assertEquals("d4ab4820-68d9-41e0-abe1-cd8f9865d275", rtfMaskinellRequestMessagePayload.getData().getAktivitetId());
+
+      responderRtfMaskinell.get(topicTimeout, TimeUnit.SECONDS);
+
+      String rtfManuellKompletteringRequest = readKafkaRequestMessage(rtfManuellKompletteringRequestTopic, handlaggningId);
+      System.out.println("Received rtfManuellKompletteringRequest: " + rtfManuellKompletteringRequest);
+      RegelRequestMessagePayload rtfManuellKompletteringRequestMessagePayload = mapper.readValue(rtfManuellKompletteringRequest,
+            RegelRequestMessagePayload.class);
+      assertEquals(handlaggningId, rtfManuellKompletteringRequestMessagePayload.getData().getHandlaggningId());
+      assertEquals("c58dd666-b3c1-4a30-91b8-76c3495668c6",
+            rtfManuellKompletteringRequestMessagePayload.getData().getAktivitetId());
 
       responderRtfMaskinell.get(topicTimeout, TimeUnit.SECONDS);
 
@@ -101,5 +113,60 @@ class VahSmokeTest extends VahTestBase
             HandlaggningResponseMessagePayload.class);
       assertEquals(handlaggningId, response.getData().getHandlaggningId());
       assertEquals("GODKÄND", response.getData().getResultat());
+   }
+
+   /**
+    * Verifies the "Komplettering" step inside rtf_manuell: it sends a request on the komplettering topic before the
+    * ordinary manuell request, and when it gets back a non-error response, rtf_manuell simply continues with its
+    * normal flow.
+    */
+   @Test
+   void testVahManuellKomplettering() throws Exception
+   {
+      var handlaggningId = UUID.randomUUID().toString();
+      System.out.println("Starting testVahManuellKomplettering");
+
+      CompletableFuture<Void> responderRtfMaskinell = startKafkaResponder(rtfMaskinellRequestTopic,
+            rtfMaskinellResponseTopic, Utfall.UTREDNING, handlaggningId);
+      CompletableFuture<Void> responderRtfManuellKomplettering = startKafkaResponder(rtfManuellKompletteringRequestTopic,
+            rtfManuellKompletteringResponseTopic, Utfall.JA, handlaggningId);
+      CompletableFuture<Void> responderRtfManuell = startKafkaResponder(rtfManuellRequestTopic,
+            rtfManuellResponseTopic, Utfall.JA, handlaggningId);
+      CompletableFuture<Void> responderBekraftaBeslut = startKafkaResponder(bekraftaBeslutRequestTopic,
+            bekraftaBeslutResponseTopic, Utfall.JA, handlaggningId);
+
+      sendVahHandlaggningRequest(handlaggningId, "A1");
+
+      String rtfMaskinellRequest = readKafkaRequestMessage(rtfMaskinellRequestTopic, handlaggningId);
+      System.out.println("Received rtfMaskinellRequest: " + rtfMaskinellRequest);
+      responderRtfMaskinell.get(topicTimeout, TimeUnit.SECONDS);
+
+      String rtfManuellKompletteringRequest = readKafkaRequestMessage(rtfManuellKompletteringRequestTopic, handlaggningId);
+      System.out.println("Received rtfManuellKompletteringRequest: " + rtfManuellKompletteringRequest);
+      RegelRequestMessagePayload kompletteringRequestPayload = mapper.readValue(rtfManuellKompletteringRequest,
+            RegelRequestMessagePayload.class);
+      assertEquals(handlaggningId, kompletteringRequestPayload.getData().getHandlaggningId());
+
+      responderRtfManuellKomplettering.get(topicTimeout, TimeUnit.SECONDS);
+
+      String rtfManuellRequest = readKafkaRequestMessage(rtfManuellRequestTopic, handlaggningId);
+      System.out.println("Received rtfManuellRequest: " + rtfManuellRequest);
+      RegelRequestMessagePayload rtfManuellRequestMessagePayload = mapper.readValue(rtfManuellRequest,
+            RegelRequestMessagePayload.class);
+      assertEquals(handlaggningId, rtfManuellRequestMessagePayload.getData().getHandlaggningId());
+      assertEquals("c58dd666-b3c1-4a30-91b8-76c3495668c6", rtfManuellRequestMessagePayload.getData().getAktivitetId());
+
+      responderRtfManuell.get(topicTimeout, TimeUnit.SECONDS);
+
+      String bekraftaBeslutRequest = readKafkaRequestMessage(bekraftaBeslutRequestTopic, handlaggningId);
+      System.out.println("Received bekraftaBeslutRequest: " + bekraftaBeslutRequest);
+      responderBekraftaBeslut.get(topicTimeout, TimeUnit.SECONDS);
+
+      String vahHandlaggningResponse = readKafkaRequestMessage(vahHandlaggningResponseTopic, handlaggningId);
+      System.out.println("Received vahHandlaggningResponse: " + vahHandlaggningResponse);
+      HandlaggningResponseMessagePayload handlaggningResponseMessagePayload = mapper.readValue(vahHandlaggningResponse,
+            HandlaggningResponseMessagePayload.class);
+      assertEquals(handlaggningId, handlaggningResponseMessagePayload.getData().getHandlaggningId());
+      assertEquals("GODKÄND", handlaggningResponseMessagePayload.getData().getResultat());
    }
 }
