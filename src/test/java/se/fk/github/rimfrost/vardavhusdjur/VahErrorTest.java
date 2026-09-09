@@ -4,7 +4,6 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.jboss.logmanager.ExtHandler;
 import org.jboss.logmanager.ExtLogRecord;
 import org.jboss.logmanager.Logger;
-import org.jboss.logmanager.formatters.PatternFormatter;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -34,7 +33,7 @@ class VahErrorTest extends VahTestBase
          @Override
          protected void doPublish(ExtLogRecord record)
          {
-            capturedLogs.add(record.getLevel().getName() + " " + new PatternFormatter("%s").format(record));
+            capturedLogs.add(record.getLevel().getName() + " " + record.getMessage());
          }
 
          @Override
