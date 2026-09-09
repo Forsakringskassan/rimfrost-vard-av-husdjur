@@ -71,6 +71,8 @@
     <bpmn2:property id="vahHandlaggningResponseMessageData" itemSubjectRef="_vahHandlaggningResponseMessageDataItem" name="vahHandlaggningResponseMessageData" />
     <bpmn2:property id="vahHandlaggningRequestMessageData" itemSubjectRef="_vahHandlaggningRequestMessageDataItem" name="vahHandlaggningRequestMessageData" />
     <bpmn2:property id="_B268A5A1-106C-4EBE-B686-20970EC6D0EA" name="result" itemSubjectRef="__9BF4B5C5-6395-4DAF-A523-56CABCE7908E_regelProcessResultInputXItem" />
+    <bpmn2:property id="manuellResponseTimeout" itemSubjectRef="_handlaggningIdItem" name="manuellResponseTimeout" />
+    <bpmn2:property id="manuellRetryDelay" itemSubjectRef="_handlaggningIdItem" name="manuellRetryDelay" />
     <bpmn2:startEvent id="_7C020ABA-9324-4EE3-857B-401B3C43FD84">
       <bpmn2:outgoing>_BD63EDE1-96EF-4E71-9D3B-E84C2D5A1F2F</bpmn2:outgoing>
       <bpmn2:dataOutput id="_7C020ABA-9324-4EE3-857B-401B3C43FD84_eventOutputX" drools:dtype="se.fk.rimfrost.HandlaggningRequestMessageData" itemSubjectRef="__7C020ABA-9324-4EE3-857B-401B3C43FD84_eventOutputXItem" name="event" />
@@ -312,6 +314,10 @@
     </bpmn2:callActivity>
     <bpmn2:callActivity id="_C29B7634-3A7A-4606-9B1C-4A3424F29D34" drools:independent="true" drools:waitForCompletion="true" name="Rätt till försäkring manuell kontroll" calledElement="rtf_manuell">
       <bpmn2:extensionElements>
+        <drools:onEntry-script scriptFormat="http://www.java.com/java">
+          <drools:script>kcontext.setVariable("manuellResponseTimeout", org.eclipse.microprofile.config.ConfigProvider.getConfig().getValue("rtf-manuell.response-timeout", String.class));
+kcontext.setVariable("manuellRetryDelay", org.eclipse.microprofile.config.ConfigProvider.getConfig().getValue("rtf-manuell.retry-delay", String.class));</drools:script>
+        </drools:onEntry-script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
           <drools:script></drools:script>
         </drools:onExit-script>
@@ -361,18 +367,12 @@
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
       <bpmn2:dataInputAssociation id="_362A5330-C6DB-4C94-BE53-A4ADB98FAC53">
+        <bpmn2:sourceRef>manuellResponseTimeout</bpmn2:sourceRef>
         <bpmn2:targetRef>_D7739F61-DA1B-4356-8E0B-2AC2B92CCEA3</bpmn2:targetRef>
-        <bpmn2:assignment id="_8668223F-71BF-40F6-850E-5964D2B5D9FC">
-          <bpmn2:from id="_B9D34BB3-9584-4921-AD85-41F998822297" xsi:type="tFormalExpression">PT30S</bpmn2:from>
-          <bpmn2:to id="_AECBC6CA-7220-43A3-8B61-9B08C41E83FD">_D7739F61-DA1B-4356-8E0B-2AC2B92CCEA3</bpmn2:to>
-        </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
       <bpmn2:dataInputAssociation id="_D40E2825-2B28-4066-BD20-BA6E7781A66C">
+        <bpmn2:sourceRef>manuellRetryDelay</bpmn2:sourceRef>
         <bpmn2:targetRef>_90931CD1-866B-44BC-868A-1A267D559059</bpmn2:targetRef>
-        <bpmn2:assignment id="_94FC1A97-F3E3-4EC9-901B-C5E3F6525000">
-          <bpmn2:from id="_FC0EDFDC-BC35-4089-8E95-066A8CE60699" xsi:type="tFormalExpression">PT10S</bpmn2:from>
-          <bpmn2:to id="_25D5CAE7-519D-421C-A961-998C0D49317A">_90931CD1-866B-44BC-868A-1A267D559059</bpmn2:to>
-        </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
       <bpmn2:dataOutputAssociation id="_BEEEAD1D-D749-482F-89B0-9D6FF1F019E0">
         <bpmn2:sourceRef>_49646147-AF98-446B-9B39-74F2D874C0F8</bpmn2:sourceRef>
