@@ -47,7 +47,7 @@ class VahSmokeTest extends VahTestBase
       assertEquals("c58dd666-b3c1-4a30-91b8-76c3495668c6",
             rtfManuellKompletteringRequestMessagePayload.getData().getAktivitetId());
 
-      responderRtfMaskinell.get(topicTimeout, TimeUnit.SECONDS);
+      responderRtfManuellKomplettering.get(topicTimeout, TimeUnit.SECONDS);
 
       String rtfManuellRequest = readKafkaRequestMessage(rtfManuellRequestTopic, handlaggningId);
       System.out.println("Received rtfManuellRequest: " + rtfManuellRequest);
