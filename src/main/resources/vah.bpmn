@@ -312,6 +312,10 @@
     </bpmn2:callActivity>
     <bpmn2:callActivity id="_C29B7634-3A7A-4606-9B1C-4A3424F29D34" drools:independent="true" drools:waitForCompletion="true" name="Rätt till försäkring manuell kontroll" calledElement="rtf_manuell">
       <bpmn2:extensionElements>
+        <drools:onEntry-script scriptFormat="http://www.java.com/java">
+          <drools:script>kcontext.setVariable(&quot;manuellResponseTimeout&quot;, org.eclipse.microprofile.config.ConfigProvider.getConfig().getValue(&quot;rtf-manuell.response-timeout&quot;, String.class));
+kcontext.setVariable(&quot;manuellRetryDelay&quot;, org.eclipse.microprofile.config.ConfigProvider.getConfig().getValue(&quot;rtf-manuell.retry-delay&quot;, String.class));</drools:script>
+        </drools:onEntry-script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
           <drools:script></drools:script>
         </drools:onExit-script>
