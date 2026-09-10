@@ -2,6 +2,32 @@
 
 Changelog of rimfrost-process-vah.
 
+## 1.1.6 (2026-09-10)
+
+### Bug Fixes
+
+-  timeouts configurable (#56) ([e16c5](https://github.com/Forsakringskassan/rimfrost-process-vah/commit/e16c555c16db738) NilsElveros)  
+
+### Dependency updates
+
+- update forsakringskassan/.github digest to d1349e6 ([20f98](https://github.com/Forsakringskassan/rimfrost-process-vah/commit/20f980602f1b993) renovate[bot])  
+- pin dependencies ([ee210](https://github.com/Forsakringskassan/rimfrost-process-vah/commit/ee210fab8cab1f4) renovate[bot])  
+### Other changes
+
+**Fix/fkpoc 971 komplettering (#53)**
+
+* fix: vah now handles komplettering 
+* fix: correct verison of rtf-manuell-subprocess 
+* Apply suggestion from @UlfSlunga-Sinetiq 
+* Co-authored-by: Ulf Slunga &lt;98820233+UlfSlunga-Sinetiq@users.noreply.github.com&gt; 
+* fix: use patternformatter instead of deprecated 
+* fix: remove patternformatter 
+* --------- 
+* Co-authored-by: Ulf Slunga &lt;98820233+UlfSlunga-Sinetiq@users.noreply.github.com&gt; 
+
+[a74c1](https://github.com/Forsakringskassan/rimfrost-process-vah/commit/a74c1c8e68e6c61) NilsElveros *2026-09-10 06:25:44*
+
+
 ## 1.1.5 (2026-08-12)
 
 ### Bug Fixes
